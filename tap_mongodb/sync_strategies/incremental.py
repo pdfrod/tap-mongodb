@@ -9,8 +9,14 @@ import tap_mongodb.sync_strategies.common as common
 LOGGER = singer.get_logger()
 
 
+def deep_get(d, keys):
+    for key in keys:
+        d = d[key]
+    return d
+
+
 def update_bookmark(row, state, tap_stream_id, replication_key_name):
-    replication_key_value = row.get(replication_key_name)
+    replication_key_value = deep_get(row, replication_key_name.split('.'))
     if replication_key_value:
         replication_key_type = replication_key_value.__class__.__name__
 
