@@ -92,6 +92,7 @@ def sync_collection(client, stream, state, projection):
     schema = {"type": "object", "properties": {}}
     with collection.find(find_filter,
                          projection,
+                         allow_disk_use=True,
                          sort=[(replication_key_name, pymongo.ASCENDING)]) as cursor:
         rows_saved = 0
         time_extracted = utils.now()
