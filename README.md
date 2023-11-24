@@ -1,3 +1,10 @@
+# Fork notes
+
+This fork of [tap-mongodb](https://github.com/singer-io/tap-mongodb) adds the following changes:
+
+- allows using a nested document propery as a replication key (e.g., `metadata.timestamp`);
+- fixes "sort exceeded memory limit" error when using incremental replication on a large collection.
+
 # tap-mongodb
 
 This is a [Singer](https://singer.io) tap that produces JSON-formatted data following the [Singer spec](https://github.com/singer-io/getting-started/blob/master/SPEC.md) from a MongoDB source.
